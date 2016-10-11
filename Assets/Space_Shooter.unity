@@ -168,6 +168,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 131884938}
+  - 54: {fileID: 131884939}
   m_Layer: 0
   m_Name: Enemy_4
   m_TagString: Untagged
@@ -190,6 +191,21 @@ Transform:
   - {fileID: 1398459648}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!54 &131884939
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 131884937}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 120
+  m_CollisionDetection: 0
 --- !u!1 &181779137
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,8 +371,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 374877273}
-  m_LocalRotation: {x: 0, y: .997476399, z: 0, w: .0709997639}
-  m_LocalPosition: {x: .660000026, y: .921000004, z: .209999993}
+  m_LocalRotation: {x: 0, y: .0359021835, z: 0, w: -.999355376}
+  m_LocalPosition: {x: -1.00999999, y: .75999999, z: .209999993}
   m_LocalScale: {x: .225478962, y: .557145476, z: .41533348}
   m_Children: []
   m_Father: {fileID: 1870408409}
@@ -369,6 +385,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433607400}
+  - 54: {fileID: 433607401}
   m_Layer: 0
   m_Name: Enemy_2
   m_TagString: Untagged
@@ -392,6 +409,21 @@ Transform:
   - {fileID: 1034966138}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!54 &433607401
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 433607399}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 120
+  m_CollisionDetection: 0
 --- !u!1 &508254743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,6 +1254,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1340226639}
+  - 54: {fileID: 1340226640}
   m_Layer: 0
   m_Name: Enemy_3
   m_TagString: Untagged
@@ -1244,6 +1277,21 @@ Transform:
   - {fileID: 1250817707}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!54 &1340226640
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1340226638}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 120
+  m_CollisionDetection: 0
 --- !u!1 &1398459647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1375,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1416459429}
+  - 54: {fileID: 1416459430}
   m_Layer: 0
   m_Name: Enemy_0
   m_TagString: Untagged
@@ -1348,6 +1397,21 @@ Transform:
   - {fileID: 2016121168}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!54 &1416459430
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1416459428}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 120
+  m_CollisionDetection: 0
 --- !u!1 &1679984806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,6 +1645,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1870408409}
+  - 54: {fileID: 1870408410}
   m_Layer: 0
   m_Name: Enemy_1
   m_TagString: Untagged
@@ -1604,6 +1669,21 @@ Transform:
   - {fileID: 768499247}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!54 &1870408410
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1870408408}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 120
+  m_CollisionDetection: 0
 --- !u!1 &1937023426
 GameObject:
   m_ObjectHideFlags: 0
