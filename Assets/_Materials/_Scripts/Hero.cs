@@ -1,41 +1,73 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hero : MonoBehaviour {
+public class Hero : MonoBehaviour
+{
+	static public Hero S; // Singleton
+	// These fields control the movement of the ship
+	public float speed = 30;
+	public float rollMult = -45;
+	public float pitchMult = 30;
 	
-	static public Hero		S;
+	public float gameRestartDelay = 2f;
 	
-	public float	speed = 30;
-	public float	rollMult = -45;
-	public float  	pitchMult=30;
+	// Ship status information
+	[SerializeField]
+	private float _shieldLevel = 1; // Add the underscore!
+
 	
-	public float	shieldLevel=1;
-	
-	public bool	_____________________;
+	public bool ____________________________;
 	public Bounds bounds;
 	
-	void Awake(){
-		S = this;
+	void Awake()
+	{
+		S = this; // Set the Singleton
+		bounds = Utils.CombineBoundsOfChildren(this.gameObject);
 	}
-	
-	
-	// Use this for initialization
-	void Start () {
+
+	void Update()
+	{
+		// Pull in information from the Input class
+		float xAxis = Input.GetAxis("Horizontal"); // 1
+		float yAxis = Input.GetAxis("Vertical"); // 1
 		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		float xAxis = Input.GetAxis("Horizontal");
-		float yAxis = Input.GetAxis("Vertical");
-		
+		// Change transform.position based on the axes
 		Vector3 pos = transform.position;
 		pos.x += xAxis * speed * Time.deltaTime;
 		pos.y += yAxis * speed * Time.deltaTime;
 		transform.position = pos;
-
 		
-		// rotate the ship to make it feel more dynamic
-		transform.rotation =Quaternion.Euler(yAxis*pitchMult, xAxis*rollMult,0);
+		bounds.center = transform.position;
+		// Keep the ship constrained to the screen bounds
+		Vector3 off = Utils.ScreenBoundsCheck(bounds, BoundsTest.onScreen);
+		if (off != Vector3.zero)
+		{
+			pos -= off;
+			transform.position = pos;
+		}
+
+		// Rotate the ship to make it feel more dynamic // 2
+		transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult, 0);
+
 	}
+
+
+	public float shieldLevel
+	{
+		get
+		{
+			return (_shieldLevel);
+		}
+		set
+		{
+			_shieldLevel = Mathf.Min(value, 4);
+			// If the shield is going to be set to less than zero
+			if (value < 0)
+			{
+				Destroy(this.gameObject);
+			}
+		}
+	}
+
 }
+
