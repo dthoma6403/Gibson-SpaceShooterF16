@@ -14,17 +14,30 @@ public class Hero : MonoBehaviour
 	// Ship status information
 	[SerializeField]
 	private float _shieldLevel = 1; // Add the underscore!
-
+	
+	// Weapon fields
+	public Weapon[] weapons;
 	
 	public bool ____________________________;
 	public Bounds bounds;
+	// Declare a new delegate type WeaponFireDelegate
+	public delegate void WeaponFireDelegate();
+	// Create a WeaponFireDelegate field named fireDelegate.
+	public WeaponFireDelegate fireDelegate;
 	
 	void Awake()
 	{
 		S = this; // Set the Singleton
 		bounds = Utils.CombineBoundsOfChildren(this.gameObject);
 	}
-
+	
+	void Start()
+	{
+		// Reset the weapons to start _Hero with 1 blaster
+		ClearWeapons();
+		weapons[0].SetType(WeaponType.blaster);
+	}
+	
 	void Update()
 	{
 		// Pull in information from the Input class
@@ -45,40 +58,29 @@ public class Hero : MonoBehaviour
 			pos -= off;
 			transform.position = pos;
 		}
-
+		
 		// Rotate the ship to make it feel more dynamic // 2
 		transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult, 0);
-
-	}
-
-
-	public float shieldLevel
-	{
-		get
-		{
-			return (_shieldLevel);
-		}
-		set
-		{
-			_shieldLevel = Mathf.Min(value, 4);
-			// If the shield is going to be set to less than zero
-			if (value < 0)
-			{
-				Destroy(this.gameObject);
-				// Tell main.S to restart the game after a delay
-				Main.S.DelayedRestart(gameRestartDelay );
-			}
+		
+		// Use the fireDelegate to fire Weapons
+		// First, make sure the Axis("Jump") button is pressed
+		// Then ensure that fireDelegate isn't null to avoid an error
+		if (Input.GetAxis("Jump") == 1 && fireDelegate != null)
+		{ // 1
+			fireDelegate();
 		}
 	}
-// Reference to the last triggering game object
+	
+	// This variable holds a reference to the last triggering GameObject
 	public GameObject lastTriggerGo = null;
-
-	void OnTriggerEnter(Collider other) {
-
+	
+	void OnTriggerEnter(Collider other)
+	{
 		// Find the tag of other.gameObject or its parent GameObjects
 		GameObject go = Utils.FindTaggedParent(other.gameObject);
 		// If there is a parent with a tag
-		if (go != null) {
+		if (go != null)
+		{
 			// Make sure it's not the same triggering go as last time
 			if (go == lastTriggerGo)
 			{
@@ -92,11 +94,60 @@ public class Hero : MonoBehaviour
 				shieldLevel--;
 				// Destroy the enemy
 				Destroy(go);
+			}
+			else
+			{
+				print("Triggered: " + go.name); // Move this line here!
+			}
+		}
+		else
+		{
+			// Otherwise announce the original other.gameObject
+			print("Triggered: " + other.gameObject.name);
 		}
 	}
+	
+	public float shieldLevel
+	{
+		get
+		{
+			return (_shieldLevel);
+		}
+		set
+		{
+			_shieldLevel = Mathf.Min(value, 4);
+			// If the shield is going to be set to less than zero
+			if (value < 0)
+			{
+				Destroy(this.gameObject);
+				// Tell Main.S to restart the game after a delay
+				Main.S.DelayedRestart(gameRestartDelay);
+			}
+		}
+	}
+	
 
-}
-
+	Weapon GetEmptyWeaponSlot()
+	{
+		for (int i = 0; i < weapons.Length; i++)
+		{
+			if (weapons[i].type == WeaponType.none)
+			{
+				return (weapons[i]);
+			}
+		}
+		return (null);
+	}
+	
+	void ClearWeapons()
+	{
+		foreach (Weapon w in weapons)
+		{
+			w.SetType(WeaponType.none);
+		}
+	}
+	
+	
 }
 
 
