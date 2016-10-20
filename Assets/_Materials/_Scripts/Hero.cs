@@ -65,9 +65,13 @@ public class Hero : MonoBehaviour
 			if (value < 0)
 			{
 				Destroy(this.gameObject);
+				// Tell main.S to restart the game after a delay
+				Main.S.DelayedRestart(gameRestartDelay );
 			}
 		}
 	}
+// Reference to the last triggering game object
+	public GameObject lastTriggerGo = null;
 
 	void OnTriggerEnter(Collider other) {
 
@@ -75,13 +79,23 @@ public class Hero : MonoBehaviour
 		GameObject go = Utils.FindTaggedParent(other.gameObject);
 		// If there is a parent with a tag
 		if (go != null) {
-			// Announce it
-			print ("Triggered: " + go.name);
-		} else {
-			// Otherwise announce the original other.gameObject
-			print("Triggered: " + other.gameObject.name);
+			// Make sure it's not the same triggering go as last time
+			if (go == lastTriggerGo)
+			{
+				return;
+			}
+			lastTriggerGo = go;
+			if (go.tag == "Enemy")
+			{
+				// If the shield was triggered by an enemy
+				// Decrease the level of the shield by 1
+				shieldLevel--;
+				// Destroy the enemy
+				Destroy(go);
 		}
 	}
+
+}
 
 }
 
