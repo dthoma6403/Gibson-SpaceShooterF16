@@ -351,16 +351,16 @@ MonoBehaviour:
     letter: B
     color: {r: .514705896, g: .480644464, b: .480644464, a: 0}
     projectilePrefab: {fileID: 186176, guid: 4159574e60781f747b4b9f03a09dcc53, type: 2}
-    projectileColor: {r: 1, g: 1, b: 1, a: 0}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 1
     continuousDamage: 0
     delayBetweenShots: .400000006
-    velocity: 50
+    velocity: 100
   - type: 2
     letter: S
     color: {r: 0, g: .933823526, b: .77812326, a: 0}
     projectilePrefab: {fileID: 186176, guid: 4159574e60781f747b4b9f03a09dcc53, type: 2}
-    projectileColor: {r: 0, g: .852941155, b: .252941161, a: 0}
+    projectileColor: {r: 0, g: .852941155, b: .252941161, a: 1}
     damageOnHit: 1
     continuousDamage: 0
     delayBetweenShots: .400000006
@@ -374,7 +374,7 @@ MonoBehaviour:
     continuousDamage: 0
     delayBetweenShots: 0
     velocity: 0
-  prefabPowerUp: {fileID: 0}
+  prefabPowerUp: {fileID: 182782, guid: 20dcfceca55545e4099ca88747047da6, type: 2}
   powerUpFrequency: 01000000010000000200000006000000
   ________________: 0
   activeWeaponTypes: 

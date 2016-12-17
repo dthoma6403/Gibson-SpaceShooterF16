@@ -86,7 +86,7 @@ public class Main : MonoBehaviour
 	}
 	public void Restart()
 	{
-		// Reload _Scene_0 to restart the game
+		// Reload Space_Shooter to restart the game
 		Application.LoadLevel("Space_Shooter");
 	}
 	

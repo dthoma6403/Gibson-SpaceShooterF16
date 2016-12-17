@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 	void OnCollisionEnter( Collision coll ) {
+
 		GameObject other = coll.gameObject;
 		switch (other.tag) {
 		case "ProjectileHero":
@@ -81,6 +82,7 @@ public class Enemy : MonoBehaviour {
 				break;
 			}
 			// Hurt this Enemy
+			Debug.Log ("I've been shot");
 			ShowDamage();
 			// Get the damage amount from the Projectile.type & Main.W_DEFS
 			health -= Main.W_DEFS[p.type].damageOnHit;
